@@ -13,7 +13,7 @@ end
 
 desc "Generate and publish to S3"
 task :publish => [:generate] do
-  system "aws s3 sync --delete _site/ s3://recipes.zoller.us/"
+  system "aws s3 sync --acl public-read --delete _site/ s3://recipes.zoller.us/"
 end
 
 desc "Serve"
