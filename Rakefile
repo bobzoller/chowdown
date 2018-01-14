@@ -11,21 +11,14 @@ task :generate do
   })).process
 end
 
-
-desc "Generate and publish blog to gh-pages"
+desc "Generate and publish to S3"
 task :publish => [:generate] do
-  Dir.mktmpdir do |tmp|
-    system "mv _site/* #{tmp}"
-    system "git checkout -B gh-pages"
-    system "rm -rf *"
-    system "mv #{tmp}/* ."
-    message = "Site updated at #{Time.now.utc}"
-    system "git add ."
-    system "git commit -am #{message.shellescape}"
-    system "git push origin gh-pages --force"
-    system "git checkout master"
-    system "echo yolo"
-  end
+  system "aws s3 sync --delete _site/ s3://recipes.zoller.us/"
 end
 
-task :default => :publish
+desc "Serve"
+task :serve do
+  system "bundle exec jekyll serve"
+end
+
+task :default => :serve
