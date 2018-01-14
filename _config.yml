@@ -15,7 +15,7 @@ collections:
   recipes:
     output: true
 
-gems: ['jekyll-lunr-js-search']
+plugins: ['jekyll-lunr-js-search']
     
 mini_magick:
     thumbnail:
