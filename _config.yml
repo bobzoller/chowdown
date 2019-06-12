@@ -15,7 +15,7 @@ collections:
     output: true
 
 plugins: ['jekyll-lunr-js-search']
-    
+
 mini_magick:
     thumbnail:
         source: images/_original
@@ -30,4 +30,4 @@ mini_magick:
         destination: images/large
         resize: "2000x2000"
 
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md']
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md', 'vendor']
